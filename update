@@ -1,0 +1,11 @@
+#!/bin/sh
+number=$(yay -Qu | wc -l)
+
+if [ ! -z number ]
+then
+	icon="󰊠"
+	printf "%s %s" $icon $number
+else
+	icon="󰧵"
+	printf "%s" $icon
+fi
