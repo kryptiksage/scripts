@@ -1,0 +1,9 @@
+#!/bin/sh
+output=$(acpi -b | head -n 1 | sed 's/,//g')
+
+level=$(echo $output | awk '{print $4}' | sed 's/%//')
+bat_status=$(echo $output | awk '{print 3}')
+
+icon="usr/share/icons/Tela/16/devices/battery.svg"
+
+[ ! $level -le 20 ] || notify-send -u critical -i $icon "Low Battery"
