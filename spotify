@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+import gi
+gi.require_version('Notify', '0.7')
+gi.require_version('Playerctl', '2.0')
+
+from gi.repository import Notify, Playerctl, GdkPixbuf
+
+player = Playerctl.Player()
+
+Notify.init("Spotify")
+notification = Notify.Notification.new("")
+
+def on_next(player):
+	metadata =  player.props.metadata
+	keys = metadata.keys()
+	if 'xesam:artist' in keys and 'xesam:title' in keys and 'xesam:album' in keys:
+		artists = " ".join(metadata['xesam:artist'])
+		title = "{0} - {1}".format(artists, metadata['xesam:title'])
+		body = "Album : {0}".format(metadata['xesam:album'])
+
+		notification.update(title,body,"/usr/share/icons/Tela-blue/scalable/apps/spotify.svg")
+		notification.show()
+
+on_next(player)
