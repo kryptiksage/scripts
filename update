@@ -1,7 +1,7 @@
 #!/bin/sh
 number=$(yay -Qu | wc -l)
 
-if [ ! -z number ]
+if [ $number -ne 0 ]
 then
 	icon="󰊠"
 	printf "%s %s" $icon $number
