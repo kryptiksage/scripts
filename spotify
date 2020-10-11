@@ -18,7 +18,7 @@ def on_next(player):
 		title = "{0} - {1}".format(artists, metadata['xesam:title'])
 		body = "Album : {0}".format(metadata['xesam:album'])
 
-		notification.update(title,body,"/usr/share/icons/Tela-blue/scalable/apps/spotify.svg")
+		notification.update(title,body,"/usr/share/icons/Tela/scalable/apps/spotify.svg")
 		notification.show()
 
 on_next(player)
