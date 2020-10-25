@@ -1,0 +1,11 @@
+#!/bin/sh
+
+path_mouse=$(upower -e | grep mouse 2>/dev/null)
+if [ ! -z "$path_mouse" ]
+then
+	percent=$(upower -i $path_mouse | awk '/percentage/ {print $2}')
+	printf "󰍽 $percent"
+else
+	printf "󰍾"
+fi
+
